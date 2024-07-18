@@ -24,10 +24,8 @@ export default async function Home() {
   const data = await getAllCountries();
 
   return (
-    <main className="main">
       <Suspense fallback={<Loading />}>
         <HomeClient data={data} />
       </Suspense>
-    </main>
   );
 }

@@ -16,24 +16,26 @@ export default function MainNav() {
       <Link href="/">
         <h1>Where in the World ?</h1>
       </Link>
-      {theme === "light" ? (
-        <Button
-          variant="outline"
-          size={"icon"}
-          onClick={() => setTheme("dark")}
-        >
-          <Moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-        </Button>
-      ) : (
-        <Button
-          variant="outline"
-          size={"icon"}
-          onClick={() => setTheme("light")}
-        >
-          {" "}
-          <Sun className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-        </Button>
-      )}
+      <div>
+        {theme === "light" ? (
+          <Button
+            variant="outline"
+            size={"icon"}
+            onClick={() => setTheme("dark")}
+          >
+            <Moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            size={"icon"}
+            onClick={() => setTheme("light")}
+          >
+            {" "}
+            <Sun className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          </Button>
+        )}
+      </div>
       {/* <p>Night mode</p> */}
     </nav>
   );

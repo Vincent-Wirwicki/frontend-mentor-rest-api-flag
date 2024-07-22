@@ -9,7 +9,7 @@ async function getCountry(name: string) {
   "use server";
   try {
     const url = "https://restcountries.com/v3.1/name/";
-    const res = await fetch(`${url}${name}`);
+    const res = await fetch(`${url}${name}`, { cache: "force-cache", });
     const data = (await res.json()) as Country[];
     //some typescript fix to have only strings
     //probably better way to do this

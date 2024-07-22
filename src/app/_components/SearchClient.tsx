@@ -15,6 +15,7 @@ export default function SearchClient({ input, setFilter }: Props) {
   return (
     <Input
       className="bg-element w-40"
+      name="search-coutry"
       placeholder="search a country..."
       value={input}
       onChange={onChange}

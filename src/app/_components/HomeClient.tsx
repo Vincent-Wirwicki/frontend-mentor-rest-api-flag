@@ -39,7 +39,7 @@ export default function HomeClient({ data }: Props) {
 
     return filteredData;
   }, [data, region, text]);
-  
+
   return (
     <>
       <div className="h-fit flex gap-5 lg:w-5/6 md:w-full md:flex-row xs:flex-col md:p-5 xs:p-2">
@@ -72,7 +72,7 @@ function CountryCard({ display }: { display: data }) {
       <div className="w-full overflow-hidden">
         <img
           src={flag}
-          alt={altFlag}
+          alt={altFlag || 'country flag image'}
           className="object-cover aspect-video w-full"
         />
       </div>

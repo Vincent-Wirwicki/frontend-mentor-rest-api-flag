@@ -80,6 +80,8 @@ function BackButton() {
     <Link href="/" className="flex">
       {" "}
       <Button
+        id="back-to-home"
+        aria-label="back to the home page"
         variant="outline"
         className="flex justify-between w-24 bg-element"
       >

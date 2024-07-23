@@ -21,7 +21,12 @@ export default function FilterRegionClient({ region, setRegion }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="bg-element w-40">
+        <Button
+          id="region-selector"
+          aria-label="select a region"
+          variant="outline"
+          className="bg-element w-40"
+        >
           {region === "none" ? "region" : region}
         </Button>
       </DropdownMenuTrigger>

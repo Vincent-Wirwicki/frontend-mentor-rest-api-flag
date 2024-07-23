@@ -19,6 +19,8 @@ export default function MainNav() {
       <div className="flex gap-2">
         {theme === "light" ? (
           <Button
+            id="toggle-dark-mode"
+            aria-label="toggle dark mode"
             variant="outline"
             size={"icon"}
             onClick={() => setTheme("dark")}
@@ -27,6 +29,8 @@ export default function MainNav() {
           </Button>
         ) : (
           <Button
+            id="toggle-light-mode"
+            aria-label="toggle light mode"
             variant="outline"
             size={"icon"}
             onClick={() => setTheme("light")}
@@ -34,15 +38,21 @@ export default function MainNav() {
             <Sun className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
         )}
-        <a
-          href="https://github.com/Vincent-Wirwicki/frontend-mentor-rest-api-flag"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <Button
+          id="github-icon"
+          variant={"outline"}
+          size={"icon"}
+          aria-label="link to my github Vincent Wirwicki"
         >
-          <Button variant={"outline"} size={"icon"}>
+          <a
+            href="https://github.com/Vincent-Wirwicki/frontend-mentor-rest-api-flag"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <GitHubIcon />
-          </Button>
-        </a>
+          </a>
+        </Button>
       </div>
     </nav>
   );

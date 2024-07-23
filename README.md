@@ -1,3 +1,14 @@
+# My feedbacks
+  Stacks in this demo :  
+  - Next JS 14
+  - Tailwind CSS
+  - Shadcn
+
+  Shadcn docs have an easy way to implemant [night mode](https://ui.shadcn.com/docs/dark-mode/next)  
+  
+  The api to fetch countries don't always find the given country.  
+  Also the data structure between the api and the data json given is a bit different.
+
 # Frontend Mentor - REST Countries API with color theme switcher
 
 <<<<<<< HEAD

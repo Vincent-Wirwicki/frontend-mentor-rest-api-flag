@@ -39,7 +39,7 @@ export default function HomeClient({ data }: Props) {
 
     return filteredData;
   }, [data, region, text]);
-
+  
   return (
     <>
       <div className="h-fit flex gap-5 lg:w-5/6 md:w-full md:flex-row xs:flex-col md:p-5 xs:p-2">
@@ -83,8 +83,8 @@ function CountryCard({ display }: { display: data }) {
         <div className="pt-2">
           <TextData keyVal="Population" value={population} />
           <TextData keyVal="Region" value={region} />
-          {capital.map((value, i) => (
-            <TextData key={i} keyVal="Capital" value={value || "null"} />
+          {capital.map(value => (
+            <TextData key={value} keyVal="Capital" value={value || "null"} />
           ))}
         </div>
       </div>

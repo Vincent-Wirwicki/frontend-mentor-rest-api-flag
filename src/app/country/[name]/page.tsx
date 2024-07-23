@@ -4,51 +4,7 @@ import { Suspense } from "react";
 import Loading from "../../_components/loading";
 import { ArrowBigLeft } from "lucide-react";
 import TextData from "@/components/ui/TextData";
-
-async function getCountry(name: string) {
-  "use server";
-  try {
-    const url = "https://restcountries.com/v3.1/name/";
-    const res = await fetch(`${url}${name}`, { cache: "force-cache", });
-    const data = (await res.json()) as Country[];
-    //some typescript fix to have only strings
-    //probably better way to do this
-    const curr = data[0].currencies;
-    const currKey = Object.keys(curr)[0];
-    const currVal = curr[currKey].name;
-
-    const nat = data[0].name.nativeName;
-    const natKey = Object.keys(nat)[0];
-    const natVal = nat[natKey].common;
-
-    const lang = data[0].languages;
-    const langKey = Object.keys(lang)[0];
-    const langVal = lang[langKey];
-
-    const country = {
-      name: data[0].name.common,
-      borders: data[0].borders,
-      flag: data[0].flags.svg,
-      altFlag: data[0].flags.alt,
-      main: {
-        nativeName: natVal,
-        population: data[0].population,
-        region: data[0].region,
-        subRegion: data[0].subregion,
-        capital: data[0].capital[0],
-      },
-      sub: {
-        domain: data[0].tld[0],
-        currency: currVal,
-        languages: langVal,
-      },
-    };
-
-    return country;
-  } catch (error) {
-    console.log(error);
-  }
-}
+import { getCountry } from "./actions";
 
 export default async function page({ params }: { params: { name: string } }) {
   const country = await getCountry(params.name);
@@ -62,8 +18,8 @@ export default async function page({ params }: { params: { name: string } }) {
       >
         <div className="lg:w-1/2 xs:w-full aspect-video flex items-center">
           <img
-            src={country?.flag}
-            alt={country?.altFlag}
+            src={country?.flag || ""}
+            alt={country?.altFlag || ""}
             className="object-fill"
           />
         </div>
@@ -80,7 +36,7 @@ export default async function page({ params }: { params: { name: string } }) {
             {country ? (
               <CountryLink links={country.borders} />
             ) : (
-              " data not found"
+              " data not found "
             )}
           </div>
         </div>
@@ -98,7 +54,7 @@ function CountryData({ data }: { data: { [key: string]: number | string } }) {
     <div className="flex flex-col lg:gap-4 xs:gap-1 ">
       {Object.entries(data).map(([k, v], i) => (
         <TextData
-          key={i + Math.random()}
+          key={i + Math.random() * i}
           keyVal={checkUpperCase(k)}
           value={v}
         />
@@ -108,9 +64,9 @@ function CountryData({ data }: { data: { [key: string]: number | string } }) {
 }
 
 function CountryLink({ links }: { links: string[] }) {
-  return links.map((link, i) => (
+  return links.map(link => (
     <Link
-      key={i + Math.random()}
+      key={link}
       href={`/country/${link}`}
       className="border p-2 w-16 text-center bg-element "
     >
